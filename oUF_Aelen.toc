@@ -1,0 +1,7 @@
+## Interface: 50400
+## Title: oUF: Aelen
+## Author: Aelen
+## Version: 0.1
+## Dependencies: oUF
+
+aelen.lua
