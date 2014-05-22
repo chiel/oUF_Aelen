@@ -2,6 +2,7 @@ local _TEXTURE = [[Interface\AddOns\TouchysMedia\statusbars\touchy-white]]
 
 local colors = setmetatable({
 	power = setmetatable({
+		['ENERGY'] = { 0.7372549019607844, 0.6862745098039216, 0.3764705882352941 },
 		['RAGE'] = {0.62745098039, 0.11764705882, 0.11764705882},
 	}, {__index = oUF.colors.power}),
 }, {__index = oUF.colors})
