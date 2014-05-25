@@ -63,6 +63,31 @@ local Player = function(self, unit)
 	self.Power = Power
 
 	if playerClass == 'MONK' then
+		local ClassIcons = {}
+		local IconFrame = CreateFrame('Frame', nil, self)
+		IconFrame:SetHeight(5)
+		IconFrame:SetPoint('BOTTOMLEFT', 0, -10)
+		IconFrame:SetPoint('RIGHT', 0, 0)
+
+		local width = 48
+		for index = 1, 5 do
+			local IconBg = CreateFrame('Frame', nil, IconFrame)
+			IconBg:SetBackdrop(backdrop)
+			IconBg:SetBackdropColor(.25, .25, .25, 1)
+			IconBg:SetBackdropBorderColor(0, 0, 0, 1)
+			IconBg:SetPoint('TOPLEFT', (index - 1) * (width + 12), 0)
+			IconBg:SetPoint('BOTTOM', 0, 0)
+			IconBg:SetWidth(width)
+
+			local Icon = IconBg:CreateTexture()
+			Icon:SetTexture(_TEXTURE)
+			Icon:SetVertexColor(1, 0, 0)
+			Icon:SetPoint('TOPLEFT', 1, -1)
+			Icon:SetPoint('BOTTOMRIGHT', -1, 1)
+			ClassIcons[index] = Icon
+		end
+		self.ClassIcons = ClassIcons
+
 		-- stagger
 		local StaggerBg = CreateFrame('Frame', nil, self)
 		StaggerBg:SetHeight(5)
