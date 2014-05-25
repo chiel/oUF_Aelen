@@ -79,7 +79,7 @@ local Player = function(self, unit)
 		local ClassIcons = {}
 		local IconFrame = CreateFrame('Frame', nil, self)
 		IconFrame:SetHeight(5)
-		IconFrame:SetPoint('BOTTOMLEFT', 0, -10)
+		IconFrame:SetPoint('BOTTOMLEFT', 0, -8)
 		IconFrame:SetPoint('RIGHT', 0, 0)
 
 		local width = 48
