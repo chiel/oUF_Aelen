@@ -1,5 +1,7 @@
 local _TEXTURE = [[Interface\AddOns\TouchysMedia\statusbars\touchy-white]]
 
+local frameWidth, frameHeight = 288, 26
+
 local colors = setmetatable({
 	power = setmetatable({
 		['ENERGY'] = { 0.7372549019607844, 0.6862745098039216, 0.3764705882352941 },
@@ -23,7 +25,7 @@ local Player = function(self, unit)
 	self:RegisterForClicks('AnyUp')
 
 	self.colors = colors
-	self:SetSize(214, 26)
+	self:SetSize(frameWidth, frameHeight)
 
 	-- health
 	local HealthBg = CreateFrame('Frame', 'nil', self)
