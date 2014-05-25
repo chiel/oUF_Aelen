@@ -134,5 +134,19 @@ oUF:RegisterStyle('Classic', Player)
 oUF:Factory(function(self)
 	self:SetActiveStyle('Classic')
 	local player = self:Spawn('player')
-	player:SetPoint('CENTER', 0, -300.5)
+	player:SetPoint('CENTER', 0, -400.5)
+	player:SetAlpha(.3)
+
+	local EventFrame = CreateFrame('Frame')
+	EventFrame:RegisterEvent('PLAYER_REGEN_DISABLED')
+	EventFrame:RegisterEvent('PLAYER_REGEN_ENABLED')
+	EventFrame:SetScript('OnEvent', function(self, event)
+		if event == 'PLAYER_REGEN_DISABLED' then
+			player:SetPoint('CENTER', 0, -200.5)
+			player:SetAlpha(1)
+		elseif event == 'PLAYER_REGEN_ENABLED' then
+			player:SetPoint('CENTER', 0, -400.5)
+			player:SetAlpha(.3)
+		end
+	end)
 end)
