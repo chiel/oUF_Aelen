@@ -5,7 +5,8 @@ local frameWidth, frameHeight = 288, 26
 local colors = setmetatable({
 	power = setmetatable({
 		['ENERGY'] = { 0.7372549019607844, 0.6862745098039216, 0.3764705882352941 },
-		['RAGE'] = {0.62745098039, 0.11764705882, 0.11764705882},
+		['MANA'] = { 0.2941176470588235, 0.6, 0.8980392156862745 },
+		['RAGE'] = { 1, 0.3568627450980392, 0.3098039215686275 },
 	}, {__index = oUF.colors.power}),
 }, {__index = oUF.colors})
 
