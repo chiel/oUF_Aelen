@@ -110,6 +110,16 @@ local Player = function(self, unit)
 		StaggerBg:SetPoint('TOPLEFT', 12, 1.5)
 		StaggerBg:SetPoint('RIGHT', -12, 0)
 		StaggerBg:SetFrameStrata('HIGH')
+		StaggerBg:Hide()
+		StaggerBg:RegisterEvent('PLAYER_REGEN_DISABLED')
+		StaggerBg:RegisterEvent('PLAYER_REGEN_ENABLED')
+		StaggerBg:SetScript('OnEvent', function(self, event)
+			if event == 'PLAYER_REGEN_DISABLED' then
+				self:Show()
+			elseif event == 'PLAYER_REGEN_ENABLED' then
+				self:Hide()
+			end
+		end)
 
 		local Stagger = CreateFrame('StatusBar', nil, StaggerBg)
 		Stagger:SetStatusBarTexture(_TEXTURE)
