@@ -17,9 +17,21 @@ local backdrop = {
 	insets = { left = 1, right = 1, top = 1, bottom = 1 }
 }
 
+local PowerPostUpdate = function(power, unit, current, max)
+	local _, powerType = UnitPowerType(unit)
+	local r, g, b = unpack(colors.power.RAGE)
+
+	if current > 39 then
+		r, g, b = unpack(colors.power[powerType])
+	end
+
+	power:SetStatusBarColor(r, g, b)
+end
+
 local _, playerClass = UnitClass('player')
 
 local Player = function(self, unit)
+
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 	self:RegisterForClicks('AnyUp')
@@ -59,8 +71,8 @@ local Player = function(self, unit)
 	Power:SetStatusBarTexture(_TEXTURE)
 	Power:SetPoint('TOPLEFT', 1, -1)
 	Power:SetPoint('BOTTOMRIGHT', -1, 1)
-	Power.colorPower = true
 	Power.frequentUpdates = true
+	Power.PostUpdate = PowerPostUpdate
 	self.Power = Power
 
 	if playerClass == 'MONK' then
