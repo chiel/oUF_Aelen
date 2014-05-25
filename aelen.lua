@@ -17,7 +17,6 @@ local backdrop = {
 }
 
 local _, playerClass = UnitClass('player')
-local playerSpec = GetSpecializationInfo(GetSpecialization())
 
 local Player = function(self, unit)
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
@@ -64,23 +63,21 @@ local Player = function(self, unit)
 	self.Power = Power
 
 	if playerClass == 'MONK' then
-		if playerSpec == 268 then
-			-- stagger
-			local StaggerBg = CreateFrame('Frame', nil, self)
-			StaggerBg:SetHeight(5)
-			StaggerBg:SetBackdrop(backdrop)
-			StaggerBg:SetBackdropColor(.25, .25, .25, 1)
-			StaggerBg:SetBackdropBorderColor(0, 0, 0, 1)
-			StaggerBg:SetPoint('TOPLEFT', 12, 1.5)
-			StaggerBg:SetPoint('RIGHT', -12, 0)
-			StaggerBg:SetFrameStrata('HIGH')
+		-- stagger
+		local StaggerBg = CreateFrame('Frame', nil, self)
+		StaggerBg:SetHeight(5)
+		StaggerBg:SetBackdrop(backdrop)
+		StaggerBg:SetBackdropColor(.25, .25, .25, 1)
+		StaggerBg:SetBackdropBorderColor(0, 0, 0, 1)
+		StaggerBg:SetPoint('TOPLEFT', 12, 1.5)
+		StaggerBg:SetPoint('RIGHT', -12, 0)
+		StaggerBg:SetFrameStrata('HIGH')
 
-			local Stagger = CreateFrame('StatusBar', nil, StaggerBg)
-			Stagger:SetStatusBarTexture(_TEXTURE)
-			Stagger:SetPoint('TOPLEFT', 1, -1)
-			Stagger:SetPoint('BOTTOMRIGHT', -1, 1)
-			self.Stagger = Stagger
-		end
+		local Stagger = CreateFrame('StatusBar', nil, StaggerBg)
+		Stagger:SetStatusBarTexture(_TEXTURE)
+		Stagger:SetPoint('TOPLEFT', 1, -1)
+		Stagger:SetPoint('BOTTOMRIGHT', -1, 1)
+		self.Stagger = Stagger
 	end
 end
 
